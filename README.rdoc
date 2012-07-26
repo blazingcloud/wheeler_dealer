@@ -1,12 +1,21 @@
-== Wheel.js Rails app example
+= Wheel.js Rails app example
 
+== Creating the app
 This app was created by running
     rails new wheeler_dealer -T -O # use rspec and no database
 
 The Gemfile was then modified: removed several assumed javascript dependencies, particularly jquery-rails
 
------
+=== Adding Wheel and a page for it to live on
+* The latest version of Wheel.js/lib/wheel was copied to /vendor/assets/javascripts
+* public/index.html was deleted
+* a new 'Deal' controller was created
+* DealController gets an empty index action
+* Empty index.html.erb added
+* routes point home to the DealControlle index action
+* application.js manifest includes the base wheel manifest
+* blank app.js manifest/file created for including the local app
+* config/application.rb include all the additional manifests
 
-Adding the latest wheel:
-The latest version of Wheel.js/lib/wheel was copied to /vendor/assets/javascripts
+
 
