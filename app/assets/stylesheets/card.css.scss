@@ -2,8 +2,9 @@
   width: 200px;
   height: 275px;
   background-color: white;
-  box-shadow: 3px 5px 5px #000;
-  margin: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
 
   .suit,
   .face_value {
@@ -14,5 +15,11 @@
     margin: 0 auto;
     text-align: center;
     margin-top: 20px;
+    font-weight: bold;
+  }
+
+  &.heart *,
+  &.diamond * {
+    color: #900;
   }
 }

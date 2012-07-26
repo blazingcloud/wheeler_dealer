@@ -37,5 +37,5 @@ Wheel.View.subclass('Deck', {
   }
 }, {
   faceValues: ['2','3','4','5','6','7','8','9','10','J','K','A'],
-  suits: ['&spades;', '&clubs;', '&hearts;', '&diams;']
+  suits: ['spade', 'club', 'heart', 'diamond']
 });
