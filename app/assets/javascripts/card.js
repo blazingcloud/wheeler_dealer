@@ -1,0 +1,1 @@
+Wheel.View.subclass('Card');

@@ -1,0 +1,18 @@
+.card {
+  width: 200px;
+  height: 275px;
+  background-color: white;
+  box-shadow: 3px 5px 5px #000;
+  margin: 10px;
+
+  .suit,
+  .face_value {
+    height: 100px;
+    width: 100px;
+    font-size: 96px;
+    line-height: 96px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+  }
+}

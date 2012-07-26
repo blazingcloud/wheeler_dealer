@@ -6,7 +6,7 @@ This app was created by running
 
 The Gemfile was then modified: removed several assumed javascript dependencies, particularly jquery-rails
 
-=== Adding Wheel and a page for it to live on
+== Adding Wheel and a page for it to live on
 * The latest version of Wheel.js/lib/wheel was copied to /vendor/assets/javascripts
 * public/index.html was deleted
 * a new 'Deal' controller was created
@@ -16,6 +16,12 @@ The Gemfile was then modified: removed several assumed javascript dependencies, 
 * application.js manifest includes the base wheel manifest
 * blank app.js manifest/file created for including the local app
 * config/application.rb include all the additional manifests
+
+== Creating some js
+* a little bit of css, html
+* card template in index.html.erb
+* deal.js adds interacting with the cards
+* card.js to manage each card view
 
 
 
