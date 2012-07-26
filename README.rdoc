@@ -4,3 +4,9 @@ This app was created by running
     rails new wheeler_dealer -T -O # use rspec and no database
 
 The Gemfile was then modified: removed several assumed javascript dependencies, particularly jquery-rails
+
+-----
+
+Adding the latest wheel:
+The latest version of Wheel.js/lib/wheel was copied to /vendor/assets/javascripts
+
