@@ -1,0 +1,6 @@
+== Wheel.js Rails app example
+
+This app was created by running
+    rails new wheeler_dealer -T -O # use rspec and no database
+
+The Gemfile was then modified: removed several assumed javascript dependencies, particularly jquery-rails
