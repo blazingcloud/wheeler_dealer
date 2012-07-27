@@ -1,4 +1,10 @@
 class DealController < ApplicationController
-  def index
+  layout :dynamic_layout
+
+  def simple
+  end
+
+  def dynamic_layout
+    params[:action]
   end
 end

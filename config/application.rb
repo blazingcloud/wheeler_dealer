@@ -58,7 +58,7 @@ module WheelerDealer
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.precompile += %w( application.js application.css app.js )
+    config.assets.precompile += %w( step_1/app.js step_1/jase.js step_a/application.css )
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

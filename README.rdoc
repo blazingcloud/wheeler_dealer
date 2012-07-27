@@ -10,7 +10,7 @@
 * go to http://localhost:3000 to see the app
 
 
-== Creating the app
+== Creating 'Simple Dealer (Step 1)'
 This app was created by running
     rails new wheeler_dealer -T -O # use rspec and no database
 
