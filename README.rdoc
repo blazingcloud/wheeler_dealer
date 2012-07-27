@@ -1,12 +1,22 @@
 = Wheel.js Rails app example
 
+== Running the app
+* clone the project
+    git clone https://github.com/blazingcloud/wheeler_dealer
+* get all your ruby gems
+    bundle install # or just bundle for the brief at heart
+* run the rails server
+    rails s
+* go to http://localhost:3000 to see the app
+
+
 == Creating the app
 This app was created by running
     rails new wheeler_dealer -T -O # use rspec and no database
 
 The Gemfile was then modified: removed several assumed javascript dependencies, particularly jquery-rails
 
-== Adding Wheel and a page for it to live on
+=== Adding Wheel and a page for it to live on
 * The latest version of Wheel.js/lib/wheel was copied to /vendor/assets/javascripts
 * public/index.html was deleted
 * a new 'Deal' controller was created
@@ -17,11 +27,25 @@ The Gemfile was then modified: removed several assumed javascript dependencies, 
 * blank app.js manifest/file created for including the local app
 * config/application.rb include all the additional manifests
 
-== Creating some js
+=== Creating some js
 * a little bit of css, html
 * card template in index.html.erb
-* deal.js adds interacting with the cards
-* card.js to manage each card view
+* deck.js builds the cards ard renders itself
+* card.js renders each card and appends itself to the passed in parent dom
+
+=== Adding interactivity to the cards
+Wheel views have an instance method that gets automatically called in order to bind listeners.
+It is called 'listen'. Now inside listen we bind 'tap' to a callback. Tap is a unified mouse 
+and touch, click-type event that Wheel will automatically generate.
+
+* interactivity is added in card.js
+* handler translates the left position on the card to a position over the discard pile
+* css animations provide smooth visual transition to new location
+
+=== Next Steps
+* Using the provided Wheel.Application object to build logic
+* Separating data/models from views. 
+* Applying some kind of fun game to our set of cards
 
 
 
