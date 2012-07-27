@@ -1,10 +1,17 @@
-.deck {
+.pile {
   width: 200px;
   height: 275px;
   margin: 10px;
   position: relative;
   left: 0;
   top: 0;
+  float: left;
+}
 
+.pile.deck {
   box-shadow: 3px 5px 5px #000;
+}
+
+.pile.discard {
+  border: 1px solid #555;
 }
