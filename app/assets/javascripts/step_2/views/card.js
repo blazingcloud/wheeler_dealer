@@ -1,1 +1,1 @@
-Wheel.View.subclass('App.Views.Card', {});
+Wheel.View.subclass('App.Views.Card');
