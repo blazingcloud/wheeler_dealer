@@ -1,0 +1,28 @@
+#game {
+  width: 1000px;
+  height: 500px;
+  margin: 50px auto;
+  background-color: #141;
+  box-shadow: 5px 5px 5px rgba(0,0,0, 0.5);
+
+  .pile {
+    width: 200px;
+    height: 275px;
+    margin: 10px;
+    position: relative;
+    left: 0;
+    top: 0;
+    float: left;
+    border: 1px solid rgba(0,0,0, 0.1);
+    position: relative;
+    top: 75px;
+
+    &.deck {
+      left: 100px;
+    }
+
+    &.discard {
+      left: 450px;
+    }
+  }
+}

@@ -1,6 +1,26 @@
 <div id='game'>
-  <div class='deck pile'></div>
+  <div class='deck pile'>
+    <div class='card heart'>
+      <div class='header details'>
+        <div class='face_value'>9</div>
+        <div class='suit'>&hearts;</div>
+      </div>
+      <div class='inner'>
+        <div class='face_value'>9</div>
+        <div class='suit'>&hearts;</div>
+      </div>
+      <div class='footer details'>
+        <div class='face_value'>9</div>
+        <div class='suit'>&hearts;</div>
+      </div>
+    </div>
+  </div>
   <div class='discard pile'></div>
 </div>
 
-<%= render :partial => 'simple_templates' %>
+<script class='template' type="text/html" name='Card'>
+  <div class='card {{suit}}'>
+    <div class='suit'>{{suitEntity}}</div>
+    <div class='face_value'>{{faceValue}}</div>
+  </div>
+</script>

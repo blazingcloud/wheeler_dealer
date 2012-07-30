@@ -1,0 +1,59 @@
+.card {
+  width: 200px;
+  height: 275px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: white;
+
+  -webkit-transition: left 250ms;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  &.heart,
+  &.diamond {
+    .suit,
+    .face_value {
+      color: #900;
+    }
+
+    .inner {
+      border: 2px solid #900;
+    }
+  }
+
+  .inner {
+    width: 125px;
+    height: 200px;
+    margin: 37px auto 0;
+    border: 1px solid black;
+
+    .suit,
+    .face_value {
+      font-size: 72px;
+      line-height: 72px;
+      margin: 15px auto 0;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+
+  .details {
+    font-size: 22px;
+    padding: 5px;
+    float: left;
+    width: 190px;
+
+    div {
+      margin: 0 2px;
+    }
+  }
+
+  .header div {
+    float: left;
+  }
+
+  .footer div {
+    float: right;
+  }
+
+}
