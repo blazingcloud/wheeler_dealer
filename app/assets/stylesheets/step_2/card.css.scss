@@ -1,65 +1,88 @@
+$card_width: 200px;
+$card_height: 275px;
+$card_red: #900;
+
 .card {
-  width: 200px;
-  height: 275px;
+  width:  $card_width;
+  height: $card_height;
   position: absolute;
   left: 0;
   top: 0;
-  background-color: white;
-
+  font-weight: bold;
+  -webkit-perspective: 1000px;
   -webkit-transition: left 750ms;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 
-  .back {
-    display: none; // will be turning over the cards soon, but for now ...
+  .faces {
     width: 100%;
     height: 100%;
-    background: #259 url(/assets/pattern_2.png);
-  }
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: all 1000ms;
+    border: 1px solid #222;
 
-  .front {
-    .details {
-      font-size: 22px;
-      padding: 5px;
-      height: 25px;
-
-      div {
-        margin: 0 2px;
-      }
+    &.flipped {
+      -webkit-transform: rotateY( 180deg );
     }
 
-    .inner {
-      width: 125px;
-      height: 200px;
-      margin: 0 auto;
-      border: 1px solid black;
-
-      .suit,
-      .face_value {
-        font-size: 72px;
-        line-height: 72px;
-        margin: 15px auto 0;
-        text-align: center;
-        font-weight: bold;
-      }
+    .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
     }
 
-    .header div {
-      float: left;
+    .back {
+      background: #259 url(/assets/pattern_2.png);
     }
 
-    .footer div {
-      float: right;
-    }
+    .front {
+      -webkit-transform: rotateY( 180deg );
+      background-color: white;
 
-    &.heart,
-    &.diamond {
-      .suit,
-      .face_value {
-        color: #900;
+      .details {
+        font-size: 22px;
+        padding: 5px;
+        height: 25px;
+
+        div {
+          margin: 0 2px;
+        }
       }
 
       .inner {
-        border: 2px solid #900;
+        width: 125px;
+        height: 200px;
+        margin: 0 auto;
+        border: 1px solid black;
+
+        .suit,
+        .face_value {
+          font-size: 72px;
+          line-height: 72px;
+          margin: 15px auto 0;
+          text-align: center;
+        }
+      }
+
+      .header div {
+        float: left;
+      }
+
+      .footer div {
+        float: right;
+      }
+
+      &.heart,
+      &.diamond {
+        .suit,
+        .face_value {
+          color: $card_red;
+        }
+
+        .inner {
+          border: 2px solid $card_red;
+        }
       }
     }
   }

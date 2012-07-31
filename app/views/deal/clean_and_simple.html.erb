@@ -6,20 +6,22 @@
 
 <script class='template' type="text/html" name='App.Views.Card'>
   <div class='card'>
-    <div class='front face {{suit}}'>
-      <div class='header details'>
-        <div class='face_value'>{{faceValue}}</div>
-        <div class='suit'>{{suitEntity}}</div>
+    <div class='faces'>
+      <div class='front face {{suit}}'>
+        <div class='header details'>
+          <div class='face_value'>{{faceValue}}</div>
+          <div class='suit'>{{suitEntity}}</div>
+        </div>
+        <div class='inner'>
+          <div class='face_value'>{{faceValue}}</div>
+          <div class='suit'>{{suitEntity}}</div>
+        </div>
+        <div class='footer details'>
+          <div class='face_value'>{{faceValue}}</div>
+          <div class='suit'>{{suitEntity}}</div>
+        </div>
       </div>
-      <div class='inner'>
-        <div class='face_value'>{{faceValue}}</div>
-        <div class='suit'>{{suitEntity}}</div>
-      </div>
-      <div class='footer details'>
-        <div class='face_value'>{{faceValue}}</div>
-        <div class='suit'>{{suitEntity}}</div>
-      </div>
+      <div class='back face'></div>
     </div>
-    <div class='back face'></div>
   </div>
 </script>

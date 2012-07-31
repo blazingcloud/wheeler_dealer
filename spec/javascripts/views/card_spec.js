@@ -2,7 +2,7 @@ describe('App.Views.Card', function() {
   var view, model;
   beforeEach(function() {
     App.Views.Card.template = function() {
-      return "<div class='card'></div>";
+      return "<div class='card'><div class='faces'></div></div>";
     };
     model = App.Models.Card.build({
       suit: 'heart',
@@ -31,6 +31,12 @@ describe('App.Views.Card', function() {
         model.move.reset();
         view.$.trigger('tap');
         expect(model.move).not.toHaveBeenCalled();
+      });
+
+      it('adds the flipped class to the faces div', function() {
+        view.$.trigger('tap');
+        console.log('view', view);
+        expect(view.$faces.attr('class')).toMatch(/flipped/);
       });
     });
   });

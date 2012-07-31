@@ -1,4 +1,8 @@
 Wheel.View.subclass('App.Views.Card', {
+  init: function() {
+    this.$faces = this.$.find('.faces');
+  },
+
   listen: function() {
     this.$.on('tap', this.onTap.bind(this));
   },
@@ -9,6 +13,7 @@ Wheel.View.subclass('App.Views.Card', {
     this.$
       .css('left',    this.model.left)
       .css('z-index', this.model.zIndex);
+    this.$faces.addClass('flipped');
     this.$.off();
   }
 });
