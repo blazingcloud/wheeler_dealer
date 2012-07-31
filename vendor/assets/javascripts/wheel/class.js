@@ -118,7 +118,6 @@ Wheel._Class.subclass('Wheel.Base', {
   initialize: function(opts) {
     this._uid = this._class.uid();
     this.optionize(opts);
-    console.log('calling init on ', this._class.id, this.init);
     this.init();
   },
 

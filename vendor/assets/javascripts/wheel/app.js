@@ -15,7 +15,7 @@ Wheel.Class.Singleton.subclass('Wheel.App', {
     this.requestQueue = Wheel.Utils.RequestQueue.build({app: this});
     this.eventManager = Modernizr.touch ? Wheel.TouchManager.build() : Wheel.MouseManager.build();
     this.templates = Wheel.Templates.build();
-    this.templates.gather();
+    this.templates.gather(); // no harm, no foul
   },
 
   listen: function() {
