@@ -24,7 +24,10 @@ Wheel.View.subclass('Card', {
     this._class.zIndex ++;
 
     this.$
-      .css('z-index', this._class.zIndex)
+      .css('z-index', this._class.zIndex)                                  
+
+
+
       .css('left', '220px');
   }
 }, {

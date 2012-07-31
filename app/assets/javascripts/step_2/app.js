@@ -1,11 +1,9 @@
 Wheel.App.subclass('App', {
   init: function() {
-    this.templates.gather();
+    var deck = App.Models.Card.deck();
+    var parent = $('.pile.deck');
+    _.each(deck, function(model) {
+      App.Views.Card.build({model: model, parent: parent});
+    });
   }
-});
-App.Models = {};
-App.Views = {};
-
-$(document).ready(function() {
-  App.build();
 });

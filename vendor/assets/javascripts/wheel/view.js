@@ -96,7 +96,19 @@ Wheel.Class('Wheel.View', {
   templates: function() {
     if (!this._templates) {
       var repository = this.templateRepository();
-      this._templates = repository && repository[this.id];
+      var pathArray = this.id.split('.');
+      if (repository) {
+        if (pathArray.length > 1) {
+          var path = repository;
+          var i, length = pathArray.length;
+          for (i = 0; i < length - 1; i++) {
+            path && (path = path[pathArray[i]]);
+          }
+          path && (this._templates = path[pathArray[i]]);
+        } else {
+          this._templates = repository[this.id];
+        }
+      }
     }
     return this._templates;
   },
@@ -105,6 +117,9 @@ Wheel.Class('Wheel.View', {
 
   template: function(key) {
     var templates = this.templates();
+    if (!templates) {
+      throw "No templates found for View: " + this.id;
+    }
     var template;
     if (templates.toString() === templates) {
       template = templates;

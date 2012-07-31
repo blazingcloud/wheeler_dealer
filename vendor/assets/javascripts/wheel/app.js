@@ -3,7 +3,7 @@ Wheel.Class.Singleton.subclass('Wheel.App', {
     if (!this._class.singleton) {
       this._class.singleton = this;
       this.initApp();
-      this._super(opts);
+      this.init(opts);
       this.listen();
     }
   },
@@ -15,6 +15,7 @@ Wheel.Class.Singleton.subclass('Wheel.App', {
     this.requestQueue = Wheel.Utils.RequestQueue.build({app: this});
     this.eventManager = Modernizr.touch ? Wheel.TouchManager.build() : Wheel.MouseManager.build();
     this.templates = Wheel.Templates.build();
+    this.templates.gather();
   },
 
   listen: function() {
@@ -45,6 +46,6 @@ Wheel.Class.Singleton.subclass('Wheel.App', {
     return this._connected;
   }
 }, {
-  View: {},
-  Model: {}
+  Views: {},
+  Models: {}
 });

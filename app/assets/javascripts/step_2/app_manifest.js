@@ -2,3 +2,4 @@
 //= require ./app.js
 //= require_tree ./models
 //= require_tree ./views
+//= require ./init.js
