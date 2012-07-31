@@ -8,7 +8,7 @@ Wheel.Class('App.Models.Card', {
   move: function() {
     this._class.zIndex = this._class.zIndex || 0;
     this.zIndex = ++ this._class.zIndex;
-    this.left = 350;
+    this.left = 573;
   }
 }, {
   suitMap: {
