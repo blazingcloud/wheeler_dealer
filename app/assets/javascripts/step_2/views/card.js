@@ -1,4 +1,4 @@
-Wheel.View.subclass('App.Views.Card', {
+Wheel.View.subclass('Step2.Views.Card', {
   init: function() {
     this.$faces = this.$.find('.faces');
   },

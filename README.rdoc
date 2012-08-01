@@ -42,10 +42,70 @@ and touch, click-type event that Wheel will automatically generate.
 * handler translates the left position on the card to a position over the discard pile
 * css animations provide smooth visual transition to new location
 
-=== Next Steps
+== Step 2 /deal/clean_and_simple
+* More DOM is rendeder on the server and less view objects are therefore needed
 * Using the provided Wheel.Application object to build logic
+* Testing with Jasmine
 * Separating data/models from views. 
-* Applying some kind of fun game to our set of cards
+* CSS card flip animation when moving the cards
 
+=== Rendering more DOM on the server
+In the first step, we used templates for each of the card piles. Then we built really simple view
+object that, in fact, only had a class name. That name associated them with a template already
+embedded in the DOM that was automatically rendered.
 
+In this step of the project we are going to pull back and let the server just render these piles.
+The DOM is also slightly richer. There is a green game area and CSS has improved the look of the
+cards.
 
+=== Wheel.Application Object
+This time instead of making a window.app object, we are going to subclass the Wheel provided
+'App' class. In the "init" method, we setup all the models and views needed by the application.
+In this case we need a collection of card models, and some corresponding views.
+
+In addition to subclassing the 'App' object, we also need to build it after all the other classes
+have been loaded into the manifest. Wheel applications are loaded in three parts typically:
+# wheel.js base code
+# Zepto or jQuery (in the future for feature sniffing will request fills here)
+# the developers application code
+
+Because the first part of the download is embedded in the script tag, and other parts happen after
+the dom is fully loaded, we can't count of the jQuery/Zepto $(document).ready handler to start the
+application. Instead, file order in the manifest becomes crucial. The init.js file has to be the last
+file declared in the manifest.
+
+The 'App' subclass is named 'Step2' to allow easy namespacing of the classes we will build for
+models and views. Step2 in fact, comes with empty objects for holding models and views:
+    Step2.Models // {}
+    Step2.Views // {}
+
+=== Jasmine Tests
+The Gemfile was changed in this step to include both the 'jasmine' gem and 'jasminerice'. Our test
+setup, however, just uses the jasminerice standard. When the server is running tests can be seen at
+/jasmine. Also, jasminerice uses the spec/javascripts/spec.js as a manifest for delivering to jasmine
+both the source files and the spec scripts.
+
+No effort was made to get jasmine working via the 'rake jasmine' script on its own. To do this, the
+jasmine.yml file has to be setup correctly with the source file and the test files.
+
+=== Separating Models from Views
+In the first step of our experiment, the views themselves held on to their data, and the templates
+were rendered using the view itself as a model. This happens automatically unless the view receives
+a model attribute.
+
+In this step, we separate out the card model into its own class. Creating the deck of cards also
+moves to a class method on the card model. Because we have jasmine testing, all of these changes
+are test-driven. The model created is namespaced in our app object to avoid cluttering the global
+variable space. The card class is therefore named 'Step2.Models.Card'.
+
+The card view class is likewise namespaced as 'Step2.Views.Card'. In the app setup we use the class
+level 'assemble' method to pass in a collection of models. Because we gave it a second argument
+consisting of options passed to each view, and because those options identified a 'parent' DOM
+node or object, the created views were automatically appended to the page.
+
+=== CSS Animation for the Card Flip
+This can be seen in /app/assets/stylesheets/step_2/card.css.scss. Documentation for how to setup a
+card flip animation in CSS abound on the internet. The best explanation of the necessary setup that
+I have found is at: http://desandro.github.com/3dtransforms/docs/card-flip.html.
+
+The animation itself is triggered by adding a CSS class via the javascript in the card view.

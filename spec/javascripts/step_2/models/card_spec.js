@@ -1,6 +1,5 @@
-describe('App.Models.Card', function() {
-  var card, opts;
-  beforeEach(function() {
+describe('Step2.Models.Card', function() {
+  var card, opts; beforeEach(function() {
     opts = {
       suit: 'heart',
       faceValue: 9
@@ -9,7 +8,7 @@ describe('App.Models.Card', function() {
 
   describe('#init', function() {
     it('suitEntity will be correctly set, given a suit', function() {
-      card = App.Models.Card.build(opts);
+      card = Step2.Models.Card.build(opts);
       expect(card.suitEntity).toBe('&hearts;');
     });
 
@@ -24,7 +23,7 @@ describe('App.Models.Card', function() {
 
   describe('#move()', function() {
     beforeEach(function() {
-      card = App.Models.Card.build();
+      card = Step2.Models.Card.build();
       spyOn(card, 'trigger');
       card.move();
     });
@@ -43,9 +42,9 @@ describe('App.Models.Card', function() {
   describe('class methods', function() {
     describe('.deck()', function() {
       it('produces a set of 52 cards', function() {
-        var deck = App.Models.Card.deck();
+        var deck = Step2.Models.Card.deck();
         expect(deck.length).toBe(52);
-        expect(deck[0] instanceof App.Models.Card).toBe(true);
+        expect(deck[0] instanceof Step2.Models.Card).toBe(true);
       });
     });
   });

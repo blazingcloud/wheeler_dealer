@@ -1,14 +1,14 @@
-describe('App.Views.Card', function() {
+describe('Step2.Views.Card', function() {
   var view, model;
   beforeEach(function() {
-    App.Views.Card.template = function() {
+    Step2.Views.Card.template = function() {
       return "<div class='card'><div class='faces'></div></div>";
     };
-    model = App.Models.Card.build({
+    model = Step2.Models.Card.build({
       suit: 'heart',
       faceValue: 'J'
     });
-    view = App.Views.Card.build({model: model});
+    view = Step2.Views.Card.build({model: model});
   });
 
   describe('#listen', function() {

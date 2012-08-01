@@ -1,4 +1,4 @@
-Wheel.Class('App.Models.Card', {
+Wheel.Class('Step2.Models.Card', {
   init: function() {
     this.suitEntity = this._class.suitMap[this.suit];
     this.left = this.left || 0;
