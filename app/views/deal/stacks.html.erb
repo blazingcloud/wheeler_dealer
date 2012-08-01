@@ -1,0 +1,31 @@
+<div id='game'>
+  <div class='deck pile'>
+  </div>
+  <div class='descending pile'>
+  </div>
+  <div class='discard pile'>
+  </div>
+</div>
+
+<script class='template' type="text/html" name='Step3.Views.Card'>
+  <div class='card'>
+    <div class='faces'>
+      <div class='front face {{suit}}'>
+        <div class='header details'>
+          <div class='face_value'>{{faceValue}}</div>
+          <div class='suit'>{{suitEntity}}</div>
+        </div>
+        <div class='inner'>
+          <div class='face_value'>{{faceValue}}</div>
+          <div class='suit'>{{suitEntity}}</div>
+        </div>
+        <div class='footer details'>
+          <div class='face_value'>{{faceValue}}</div>
+          <div class='suit'>{{suitEntity}}</div>
+        </div>
+      </div>
+      <div class='back face'></div>
+    </div>
+  </div>
+</script>
+

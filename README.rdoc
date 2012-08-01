@@ -109,3 +109,14 @@ card flip animation in CSS abound on the internet. The best explanation of the n
 I have found is at: http://desandro.github.com/3dtransforms/docs/card-flip.html.
 
 The animation itself is triggered by adding a CSS class via the javascript in the card view.
+
+== Step 3 /deal/stacks
+In this experiment we will be creating two different types of stacks:
+* A basic stack that will accept any card and displays them all on atop the other.
+* A decreasing stack that will only accept a King card initially and then will accept a Queen card in
+an oppositely colored suit. It will then accept oppositely colored decreasing value cards until it
+gets to the lowest card value, Ace. This kind of stack is what we typically see in Klondike
+solitaire games. The cards will be offset so that the top of each card is easily visible.
+
+A deck will be created in a basic stack. When the cards in this stack are tapped, they will turn
+over and move to either a decreasing stack if applicable, or to a second basic stack.
