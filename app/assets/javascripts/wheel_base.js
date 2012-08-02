@@ -16,3 +16,4 @@
 //= require wheel/event_managers/event_manager
 //= require wheel/event_managers/touch_manager
 //= require wheel/event_managers/mouse_manager
+//= require wheel/model

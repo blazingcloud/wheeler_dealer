@@ -1,5 +1,6 @@
 describe('Step3.Models.Card', function() {
-  var card, opts; beforeEach(function() {
+  var card, opts;
+  beforeEach(function() {
     opts = {
       suit: 'heart',
       faceValue: 9
@@ -12,30 +13,11 @@ describe('Step3.Models.Card', function() {
       expect(card.suitEntity).toBe('&hearts;');
     });
 
-    it('sets the left to 0 unless otherwise provide', function() {
-      expect(card.left).toBe(0);
-    });
-
-    it('sets the right to 0 unless otherwise provided', function() {
-      expect(card.top).toBe(0);
-    });
-  });
-
-  describe('#move()', function() {
-    beforeEach(function() {
-      card = Step3.Models.Card.build();
-      spyOn(card, 'trigger');
-      card.move();
-    });
-
-    it('changes left attributes', function() {
-      expect(card.left).toBeGreaterThan(0);
-    });
-
-    it('changes the z-index', function() {
-      expect(card.zIndex).not.toBe(undefined);
-      expect(card.zIndex).not.toBe(0);
-      expect(card.zIndex).toBe(card._class.zIndex);
+    it('sets the default position', function() {
+      expect(card.position()).toEqual({
+        left: 0,
+        top: 0
+      });
     });
   });
 
@@ -47,5 +29,11 @@ describe('Step3.Models.Card', function() {
         expect(deck[0] instanceof Step3.Models.Card).toBe(true);
       });
     });
+  });
+
+  it('#changePosition(key, value) is a helper for setting the position attribute', function() {
+    card = Step3.Models.Card.build(opts);
+    card.changePosition('left', 32);
+    expect(card.position().left).toBe(32);
   });
 });

@@ -35,7 +35,6 @@ describe('Step2.Views.Card', function() {
 
       it('adds the flipped class to the faces div', function() {
         view.$.trigger('tap');
-        console.log('view', view);
         expect(view.$faces.attr('class')).toMatch(/flipped/);
       });
     });

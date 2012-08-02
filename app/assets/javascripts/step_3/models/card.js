@@ -1,16 +1,21 @@
-Wheel.Class('Step3.Models.Card', {
+Wheel.Model.subclass('Step3.Models.Card', {
   init: function() {
     this.suitEntity = this._class.suitMap[this.suit];
-    this.left = this.left || 0;
-    this.top = this.top || 0;
+
+    this.position({
+      left: this.left || 0,
+      top: this.top || 0
+    });
   },
 
-  move: function() {
-    this._class.zIndex = this._class.zIndex || 0;
-    this.zIndex = ++ this._class.zIndex;
-    this.left = 573;
+  changePosition: function(key, value) {
+    var position = this.position();
+    position[key] = value;
+    this.position(position);
   }
 }, {
+  properties: ['position'],
+
   suitMap: {
     spade:   '&spades;',
     club:    '&clubs;',

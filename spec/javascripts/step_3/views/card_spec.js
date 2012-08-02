@@ -1,4 +1,4 @@
-describe('Step3.Views.Card', function() {
+xdescribe('Step3.Views.Card', function() {
   var view, model;
   beforeEach(function() {
     Step3.Views.Card.template = function() {
