@@ -1,13 +1,16 @@
 Wheel.App.subclass('Step3', {
   init: function() {
     // models
-    this.cards =        Step3.Models.Card.deck();
-    this.deckStack =    Step3.Models.Stack.build({cards: this.cards});
-    this.discardStack = Step3.Models.Stack.build();
+    this.cardDeck =   Step3.Models.Card.deck();
+    this.deck =       Step3.Models.Stack.build({cards: this.cardDeck});
+    this.waste =      Step3.Models.Stack.build();
+    this.tableau =    Step3.Models.Stack.build(); // this will change to a 
 
     // views
-    this.deckContainer =    Step3.Views.Stack.build($('.deck'));
-    this.discardContainer = Step3.Views.Stack.build($('.discard'));
-    this.cardViews =        Step3.Views.Card.assemble(this.cards, {parent: this.deckContainer});
+    this.deckView =    Step3.Views.Stack.build($('.stack.deck'));
+    this.wasteView =   Step3.Views.Stack.build($('.stack.waste'));
+    this.tableauView = Step3.Views.Stack.build($('.stack.tableau'));
+    // render all the cardViews into the deckView
+    this.cardViews =   Step3.Views.Card.assemble(this.cardDeck, {parent: this.deckView});
   }
 });

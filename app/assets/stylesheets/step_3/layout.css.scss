@@ -15,7 +15,7 @@
     border-bottom: 1px solid rgba(255,255,255, 0.2);
   }
 
-  .pile {
+  .stack {
     width: 200px;
     height: 275px;
     margin: 10px;
@@ -32,11 +32,8 @@
       left: 50px;
     }
 
-    &.descending {
-      left: 300px;
-    }
-
-    &.discard {
+    &.tableau,
+    &.waste {
       left: 300px;
     }
   }
