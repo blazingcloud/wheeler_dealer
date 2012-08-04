@@ -2,10 +2,13 @@ Wheel.Model.subclass('Step3.Models.Card', {
   init: function() {
     this.suitEntity = this._class.suitMap[this.suit];
 
+    // set default properties
     this.position({
       left: this.left || 0,
-      top: this.top || 0
+      top: this.top || 0,
+      zIndex: this.zIndex || 0
     });
+    this.face() || this.face('back');
   },
 
   changePosition: function(key, value) {
@@ -14,7 +17,7 @@ Wheel.Model.subclass('Step3.Models.Card', {
     this.position(position);
   }
 }, {
-  properties: ['position'],
+  properties: ['position', 'face'],
 
   suitMap: {
     spade:   '&spades;',

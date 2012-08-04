@@ -4,9 +4,10 @@ describe('Step3.Models.Stack', function() {
     otherCards = Step3.Models.Card.deck();
     stackCards = otherCards.splice(0,5);
     stack = Step3.Models.Stack.build({cards: stackCards});
+    stack.positionCards();
   });
 
-  describe('init', function() {
+  describe('#init', function() {
     it('sets the position', function() {
       expect(stack.position()).toEqual({
         left: 0,
@@ -19,6 +20,20 @@ describe('Step3.Models.Stack', function() {
       stack = Step3.Models.Stack.build();
       expect(stack.cards).toEqual([]);
     });
+
+    it('listens for changes to the stack position, and changes the card positions', function() {
+      stack.position({
+        left: 220,
+        top: 0,
+        zIndex: 42
+      });
+
+      expect(stack.cards[0].position()).toEqual({
+        left: 220,
+        top: 0,
+        zIndex: 43
+      });
+    });
   });
 
   describe('#canAdd(card)', function() {
@@ -30,6 +45,11 @@ describe('Step3.Models.Stack', function() {
     it('is false if it is not a card', function() {
       var notCard = {};
       expect(stack.canAdd(notCard)).toBe(false);
+    });
+
+    it('is false if the card is a duplicate', function() {
+      var card = stack.cards[0];
+      expect(stack.canAdd(card)).toBe(false);
     });
   });
 
@@ -47,6 +67,23 @@ describe('Step3.Models.Stack', function() {
       it('adds the card to the end of the cards array', function() {
         stack.add(card);
         expect(stack.cards[stack.cards.length - 1]).toBe(card);
+      });
+
+      it('positions the card', function() {
+        spyOn(card, 'position');
+        stack.add(card);
+        expect(card.position).toHaveBeenCalled();
+        expect(card.position.mostRecentCall.args[0]).toEqual({
+          left: 0,
+          top: 0,
+          zIndex: 6
+        });
+      });
+
+      it('shows the front face', function() {
+        spyOn(card, 'face');
+        stack.add(card);
+        expect(card.face).toHaveBeenCalledWith('front');
       });
 
       it('returns true', function() {
@@ -68,6 +105,12 @@ describe('Step3.Models.Stack', function() {
         expect(stack.add(card)).toBe(false);
       });
     });
+  });
+
+  it('removes cards', function() {
+    var card = stack.cards[2];
+    stack.remove(card);
+    expect(_.include(stack.cards, card)).toBe(false);
   });
 
   describe('#positionCards', function() {

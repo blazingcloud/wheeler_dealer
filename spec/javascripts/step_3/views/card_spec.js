@@ -1,43 +1,74 @@
-xdescribe('Step3.Views.Card', function() {
+describe('Step3.Views.Card', function() {
   var view, model;
   beforeEach(function() {
     Step3.Views.Card.template = function() {
       return "<div class='card'><div class='faces'></div></div>";
     };
+
     model = Step3.Models.Card.build({
       suit: 'heart',
       faceValue: 'J'
     });
+
     view = Step3.Views.Card.build({model: model});
   });
 
-  describe('#listen', function() {
+  describe('#init', function() {
+    it('sets the $faces attribute', function() {
+      expect(view.$faces.attr('class')).toMatch(/faces/);
+    });
+
+    it('animates', function() {
+      spyOn(view, 'animate');
+      view.init();
+      expect(view.animate).toHaveBeenCalled();
+    });
+  });
+
+  describe('listen', function() {
+    describe('on the model', function() {
+      it('a change to the faces property and call flip', function() {
+        var cssClass = view.$faces.attr('class');
+        model.trigger('change:face');
+        expect(view.$faces.attr('class')).not.toBe(cssClass);
+      });
+
+      it('a change in position will animate the card', function() {
+        spyOn(view.$, 'css').andReturn(view.$);
+        model.trigger('change:position');
+        expect(view.$.css.argsForCall.length).toBe(3);
+      });
+    });
+
     describe('on tap', function() {
-      it('it changes the left attribute of the model', function() {
-        spyOn(model, 'move');
+      it('triggers a move event on the model', function() {
+        spyOn(model, 'trigger');
         view.$.trigger('tap');
-        expect(model.move).toHaveBeenCalled();
+        expect(model.trigger).toHaveBeenCalledWith('move');
       });
+    });
+  });
 
-      it('sets css values on the dom', function() {
-        view.$.trigger('tap');
-        expect(view.$.css('left')).toBe(model.left + 'px');
-        expect(view.$.css('z-index')).toBe(model.zIndex + '');
-      });
+  describe('#flip', function() {
+    it('toggle the class "flipped" on the faces', function() {
+      expect(view.$faces.attr('class')).not.toMatch(/flipped/);
+      view.flip();
+      expect(view.$faces.attr('class')).toMatch(/flipped/);
+      view.flip();
+      expect(view.$faces.attr('class')).not.toMatch(/flipped/);
+    });
+  });
 
-      it('stops listening on the card', function() {
-        spyOn(model, 'move');
-        view.$.trigger('tap');
-        model.move.reset();
-        view.$.trigger('tap');
-        expect(model.move).not.toHaveBeenCalled();
-      });
-
-      it('adds the flipped class to the faces div', function() {
-        view.$.trigger('tap');
-        console.log('view', view);
-        expect(view.$faces.attr('class')).toMatch(/flipped/);
-      });
+  describe('#animate', function() {
+    it('sets css properties', function() {
+      spyOn(view.$, 'css').andReturn(view.$);
+      model._position = {
+        left: 220,
+        top: 400,
+        zIndex: 30
+      };
+      view.animate();
+      expect(view.$.css.argsForCall.length).toBe(3);
     });
   });
 });

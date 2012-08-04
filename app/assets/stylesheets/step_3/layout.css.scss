@@ -1,9 +1,14 @@
+@import 'variables';
+
 #game {
   width: 1000px;
-  height: 500px;
+  min-height: 500px;
   margin: 50px auto;
   background-color: #141;
   box-shadow: 5px 5px 5px rgba(0,0,0, 0.5);
+  border: 1px solid rgba(255,255,255, 0.12);
+  border-bottom: none;
+  border-right: none;
   font-family: Georgia, "Book Antiqua", serif;
 
   h1 {
@@ -15,26 +20,30 @@
     border-bottom: 1px solid rgba(255,255,255, 0.2);
   }
 
-  .stack {
-    width: 200px;
-    height: 275px;
-    margin: 10px;
-    position: relative;
-    left: 0;
-    top: 0;
-    float: left;
-    border: 1px solid rgba(0,0,0, 0.2);
-    position: relative;
-    top: 50px;
-    background-color: rgba(0,0,0, 0.1);
 
-    &.deck {
-      left: 50px;
-    }
+  .stacks {
+    position: relative;
 
-    &.tableau,
-    &.waste {
-      left: 300px;
+    .stack {
+      position: absolute;
+
+      width: $card_width;
+      height: $card_height;
+      margin: $card_margin;
+      border: 1px solid rgba(0,0,0, 0.2);
+      background-color: rgba(0,0,0, 0.1);
+
+      &.deck {
+        left: 50px;
+      }
+
+      &.tableau {
+        left: 500px;
+      }
+
+      &.waste {
+        left: 750px;
+      }
     }
   }
 }

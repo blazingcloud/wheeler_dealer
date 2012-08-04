@@ -1,14 +1,16 @@
-$card_width: 200px;
-$card_height: 275px;
-$card_red: #900;
+@import 'variables';
 
 .card {
   width:  $card_width;
   height: $card_height;
+  margin: $card_margin;
+
   position: absolute;
   left: 0;
   top: 0;
+
   font-weight: bold;
+
   -webkit-perspective: 1000px;
   -webkit-transition: left 750ms;
   -webkit-tap-highlight-color: rgba(0,0,0,0);

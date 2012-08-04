@@ -1,9 +1,24 @@
 describe('Step3.Models.Card', function() {
-  var card, opts;
+  var card, opts, stacks;
   beforeEach(function() {
     opts = {
       suit: 'heart',
       faceValue: 9
+    };
+
+    stacks = {
+      deck: {
+        add: jasmine.createSpy(),
+        remove: jasmine.createSpy()
+      },
+      tableau: {
+        add: jasmine.createSpy(),
+        remove: jasmine.createSpy()
+      },
+      waste: {
+        add: jasmine.createSpy(),
+        remove: jasmine.createSpy()
+      }
     };
   });
 
@@ -16,9 +31,20 @@ describe('Step3.Models.Card', function() {
     it('sets the default position', function() {
       expect(card.position()).toEqual({
         left: 0,
-        top: 0
+        top: 0,
+        zIndex: 0
       });
     });
+
+    it('sets the face to "back"', function() {
+      expect(card.face()).toBe("back");
+    });
+  });
+
+  it('#changePosition(key, value) is a helper for setting the position attribute', function() {
+    card = Step3.Models.Card.build(opts);
+    card.changePosition('left', 32);
+    expect(card.position().left).toBe(32);
   });
 
   describe('class methods', function() {
@@ -29,11 +55,5 @@ describe('Step3.Models.Card', function() {
         expect(deck[0] instanceof Step3.Models.Card).toBe(true);
       });
     });
-  });
-
-  it('#changePosition(key, value) is a helper for setting the position attribute', function() {
-    card = Step3.Models.Card.build(opts);
-    card.changePosition('left', 32);
-    expect(card.position().left).toBe(32);
   });
 });
