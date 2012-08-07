@@ -1,6 +1,7 @@
 Wheel.Model.subclass('Step3.Models.Card', {
   init: function() {
     this.suitEntity = this._class.suitMap[this.suit];
+    this.color = this.suit.match(/club|spade/) ? 0 : 1;
 
     // set default properties
     this.position({
@@ -27,7 +28,7 @@ Wheel.Model.subclass('Step3.Models.Card', {
   },
 
   suits: ['spade', 'club', 'heart', 'diamond'],
-  faceValues: ['2','3','4','5','6','7','8','9','10','J','Q','K','A'],
+  faceValues: ['A','2','3','4','5','6','7','8','9','10','J','Q','K'],
 
   deck: function() {
     var deck = [];
@@ -42,5 +43,9 @@ Wheel.Model.subclass('Step3.Models.Card', {
       }.bind(this));
     }.bind(this));
     return _.shuffle(deck);
+  },
+
+  nextFaceValue: function(faceValue) {
+    return this.faceValues[_.indexOf(this.faceValues, faceValue)-1];
   }
 });

@@ -1,6 +1,7 @@
 Wheel.Model.subclass('Step3.Models.Stack', {
   init: function() {
     this.cards = this.cards || [];
+    this.offset = 20;
     this.position({
       zIndex: this.zIndex || 0,
       left: this.left || 0,
@@ -77,6 +78,10 @@ Wheel.Model.subclass('Step3.Models.Stack', {
     var topCard = this.topCard();
     var position = topCard && topCard.position();
     return (position && position.zIndex) || 0;
+  },
+
+  isEmpty: function() {
+    return !this.cards.length;
   }
 }, {
   properties: ['position']

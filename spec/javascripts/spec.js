@@ -9,6 +9,7 @@
 //= require step_3/models/card
 //= require step_3/models/stack
 //= require step_3/models/game
+//= require step_3/models/tableau
 //= require step_3/views/card
 //= require step_3/views/stack
 //

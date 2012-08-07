@@ -123,4 +123,15 @@ describe('Step3.Models.Stack', function() {
       });
     });
   });
+
+  describe('#isEmpty', function() {
+    it('is true if there are no cards', function() {
+      stack.cards = [];
+      expect(stack.isEmpty()).toBe(true);
+    });
+
+    it('is false if there are cards', function() {
+      expect(stack.isEmpty()).toBe(false);
+    });
+  });
 });

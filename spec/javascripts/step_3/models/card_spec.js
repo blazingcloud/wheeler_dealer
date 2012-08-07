@@ -39,6 +39,16 @@ describe('Step3.Models.Card', function() {
     it('sets the face to "back"', function() {
       expect(card.face()).toBe("back");
     });
+
+    it('sets the color to 1 for red cards', function() {
+      expect(card.color).toBe(1);
+    });
+
+    it('sets the color to 0 for black cards', function() {
+      card.suit = 'club';
+      card.init();
+      expect(card.color).toBe(0);
+    });
   });
 
   it('#changePosition(key, value) is a helper for setting the position attribute', function() {
@@ -53,6 +63,24 @@ describe('Step3.Models.Card', function() {
         var deck = Step3.Models.Card.deck();
         expect(deck.length).toBe(52);
         expect(deck[0] instanceof Step3.Models.Card).toBe(true);
+      });
+    });
+
+    describe('#nextFaceValue(faceValue)', function() {
+      it('is falsey for "A"', function() {
+        expect(Step3.Models.Card.nextFaceValue('A')).toBeFalsy();
+      });
+
+      it('is "A" when given "2"', function() {
+        expect(Step3.Models.Card.nextFaceValue('2')).toBe('A');
+      });
+
+      it('is "2" when given "3"', function() {
+        expect(Step3.Models.Card.nextFaceValue('3')).toBe('2');
+      });
+
+      it('is "Q" when given "K"', function() {
+        expect(Step3.Models.Card.nextFaceValue('K')).toBe('Q');
       });
     });
   });

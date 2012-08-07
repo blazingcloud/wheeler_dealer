@@ -3,7 +3,7 @@ Wheel.Model.subclass('Step3.Models.Game', {
     this.cards =    Step3.Models.Card.deck();
     this.deck =     Step3.Models.Stack.build({cards: this.cards});
     this.waste =    Step3.Models.Stack.build({zIndex: 100});
-    this.tableau =  Step3.Models.Stack.build({zIndex: 100});
+    this.tableau =  Step3.Models.Tableau.build({zIndex: 100});
 
     this.listen();
   },
