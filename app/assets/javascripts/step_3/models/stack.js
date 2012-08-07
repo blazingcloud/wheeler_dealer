@@ -1,7 +1,6 @@
 Wheel.Model.subclass('Step3.Models.Stack', {
   init: function() {
     this.cards = this.cards || [];
-    this.offset = 20;
     this.position({
       zIndex: this.zIndex || 0,
       left: this.left || 0,
@@ -22,6 +21,8 @@ Wheel.Model.subclass('Step3.Models.Stack', {
       }.bind(this));
     }.bind(this));
   },
+
+  offset: 35,
 
   canAdd: function(card) {
     return (card instanceof Step3.Models.Card) && !_.include(this.cards, card);

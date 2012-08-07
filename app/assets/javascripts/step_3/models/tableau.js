@@ -3,10 +3,10 @@ Step3.Models.Stack.subclass('Step3.Models.Tableau', {
     var _super = this._super(card);
     if (!_super) {return _super;}
 
-    var bottom = this.bottomCard();
-    if (bottom) {
-      return card.color !== bottom.color &&
-        Step3.Models.Card.nextFaceValue(bottom.faceValue) === card.faceValue;
+    var top = this.topCard();
+    if (top) {
+      return card.color !== top.color &&
+        Step3.Models.Card.nextFaceValue(top.faceValue) === card.faceValue;
     } else {
       return card.faceValue === 'K';
     }

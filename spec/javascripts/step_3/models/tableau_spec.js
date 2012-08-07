@@ -37,6 +37,34 @@ describe('Step3.Models.Tableau', function() {
         expect(tableau.canAdd(seven)).toBe(false);
       });
     });
+
+    it('builds an entire tableau', function() {
+      var card;
+      expect(tableau.add(king)).toBe(true); // red
+      expect(tableau.add(queen)).toBe(true); // black
+      card = Step3.Models.Card.build({faceValue: 'J', suit: 'heart'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '10', suit: 'club'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '9', suit: 'heart'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '8', suit: 'club'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '7', suit: 'heart'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '6', suit: 'club'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '5', suit: 'heart'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '4', suit: 'club'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '3', suit: 'heart'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: '2', suit: 'club'});
+      expect(tableau.add(card)).toBe(true);
+      card = Step3.Models.Card.build({faceValue: 'A', suit: 'heart'});
+      expect(tableau.add(card)).toBe(true);
+    });
   });
 
   describe('#positionCard', function() {
