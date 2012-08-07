@@ -113,10 +113,57 @@ The animation itself is triggered by adding a CSS class via the javascript in th
 == Step 3 /deal/stacks
 In this experiment we will be creating two different types of stacks:
 * A basic stack that will accept any card and displays them all on atop the other.
-* A decreasing stack that will only accept a King card initially and then will accept a Queen card in
-an oppositely colored suit. It will then accept oppositely colored decreasing value cards until it
-gets to the lowest card value, Ace. This kind of stack is what we typically see in Klondike
-solitaire games. The cards will be offset so that the top of each card is easily visible.
+* A decreasing stack that you might see in a solitaire Klondike tableau. It is a descending
+stack of offset cards that start with a king and decreases in alternating colors to 2. 
 
 A deck will be created in a basic stack. When the cards in this stack are tapped, they will turn
 over and move to either a decreasing stack if applicable, or to a second basic stack.
+
+Overview of implementation:
+* Basic DOM rendered on the server
+* The card view receives events and triggers new events on the model
+* A game model manages all other models, translating events into interaction between models
+* Stack model and its subclass Tableau handle business logic for placement of cards
+
+=== Server Rendered DOM
+As with the second experiment, the server is providing the basic framework of the DOM. Cards
+are still rendered dynamically. What is different about this step in the development is that
+the Stack views inform their Stack model counterparts about position data. This is a way that
+CSS can be shared with javascript without duplication. A designer can continue to change
+the look of the page without the javascript also having to be changed to match that CSS.
+
+=== Views Trigger Model Events, Models Have Evented Properties
+This step in the experiment transaltes user interactions with the view into model events, because
+the models contain all the business logic.
+
+The views also listen for changes on the model and respond. In Step 2 of this example app,
+the Card model was really just a basic class. Now the Stack and Card models are inherited from
+the Wheel.Model, a class that provides evented properties. After properties are defined on
+the class level, instances have methods for these properties. When properties change, events
+are fired on the model.
+
+=== Game Model: The Parent Logic
+While the views are listening for property change events and reacting with render changes,
+other events are triggered up the chain to Game model. This model builds all the other models
+at work. It listens for 'move' events on each of the cards. This event is triggered by the
+view when tapped.
+
+So, why isn't the card just moving itself when tapped? Unlike previous experiments, the cards
+are no longer just moving to a location, they are moving to a stack of cards (that has a location).
+Knowledge of the stacks of cards does not belong inside each of the cards. It belongs inside 
+a parent object. Many javascript developers use the rule that an object can call methods on its 
+dependents, but should send events up to its parents.
+
+=== Stacks
+While the game has knowledge of the models it created. Logic for what constitutes a legal
+stack of cards belongs in its own object, a stack. The basic logic for a stack is that it
+only accepts objects that are cards. It will not accept duplicate cards. It changes the position
+of the card when the card is added to the stack.
+
+Tableau is a subclass of the more generic card stack. It has more restrictive rules that ensure
+the Klondike style descending stack. It also position cards with a vertical offset to allow
+the top of each card in the stack to be easily seen.
+
+== Step 4 /deal/step_4
+
+
