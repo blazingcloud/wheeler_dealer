@@ -13,6 +13,13 @@
 //= require step_3/views/card
 //= require step_3/views/stack
 //
+//= require step_4/models/card
+//= require step_4/models/stack
+//= require step_4/models/game
+//= require step_4/models/tableau
+//= require step_4/views/card
+//= require step_4/views/stack
+//
 //= require_tree ./
 
 // this is a hack to get jasmine-jquery working with Zepto
