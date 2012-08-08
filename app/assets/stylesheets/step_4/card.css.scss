@@ -54,26 +54,26 @@
       background-color: white;
 
       .details {
-        font-size: 22px;
-        padding: 5px;
-        height: 25px;
+        font-size: $card_margin*4;
+        padding: $card_margin/2;
+        height: $card_margin*4;
 
         div {
-          margin: 0 2px;
+          margin: 0 $card_margin/3;
         }
       }
 
       .inner {
-        width: 125px;
-        height: 200px;
+        width: $card_width - (4*$card_margin);
+        height: $card_height - (10*$card_margin);
         margin: 0 auto;
         border: 1px solid black;
 
         .suit,
         .face_value {
-          font-size: 72px;
-          line-height: 72px;
-          margin: 15px auto 0;
+          font-size: $card_margin*6;
+          line-height: $card_margin*6;
+          margin: 0 auto 0;
           text-align: center;
         }
       }
@@ -94,7 +94,7 @@
         }
 
         .inner {
-          border: 2px solid $card_red;
+          border: 1px solid $card_red;
         }
       }
     }

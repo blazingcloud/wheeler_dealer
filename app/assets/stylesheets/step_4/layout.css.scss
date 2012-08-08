@@ -25,24 +25,41 @@
     position: relative;
 
     .stack {
-      position: absolute;
+      position: relative;
+      float: left;
+      top: $stack_margin;
+      margin-left: $stack_margin;
 
       width: $card_width;
       height: $card_height;
-      margin: $card_margin;
       border: 1px solid rgba(0,0,0, 0.2);
       background-color: rgba(0,0,0, 0.1);
+    }
 
-      &.deck {
-        left: 50px;
+    .top, .tableaus {
+      margin: $stack_margin * 2;
+    }
+
+    .area {
+      position: relative;
+      float: left;
+      left: $stack_margin;
+      top: $stack_margin;
+      height: $card_height + (2* $stack_margin);
+
+      border: 1px solid rgba(0,0,0, 0.2);
+
+      &.resevoir {
+        width: ($card_width + 2*$stack_margin) * 2 - 5;
       }
 
-      &.tableau {
-        left: 500px;
+      &.foundations {
+        left: $card_width + $stack_margin;
+        width: ($card_width + $stack_margin) * 4 + 2* $stack_margin;
       }
 
-      &.waste {
-        left: 750px;
+      &.tableaus {
+        width: ($card_width + $stack_margin) * 7 + 2* $stack_margin + 5;
       }
     }
   }
