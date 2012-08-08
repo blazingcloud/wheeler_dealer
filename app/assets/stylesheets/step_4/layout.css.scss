@@ -34,6 +34,10 @@
       height: $card_height;
       border: 1px solid rgba(0,0,0, 0.2);
       background-color: rgba(0,0,0, 0.1);
+
+      &.shadow {
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      }
     }
 
     .top, .tableaus {
@@ -49,6 +53,13 @@
       background-color: rgba(255,255,255, 0.05);
 
       border: 1px solid rgba(0,0,0, 0.2);
+
+      p {
+        font-size: $card_margin * 10;
+        color: rgba(255,255,255, 0.1);
+        text-align: center;
+        margin-top: $stack_margin * 3;
+      }
 
       &.resevoir {
         width: ($card_width + 2*$stack_margin) * 2 - 5;

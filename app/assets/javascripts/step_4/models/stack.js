@@ -6,6 +6,7 @@ Wheel.Model.subclass('Step4.Models.Stack', {
       left: this.left || 0,
       top: this.top || 0
     });
+    this.length(this.cards.length);
 
     this.listen();
   },
@@ -35,6 +36,7 @@ Wheel.Model.subclass('Step4.Models.Stack', {
       this.positionCard(card, zIndex);
       card.face('front');
       this.cards[this.cards.length] = card;
+      this.length(this.cards.length);
     }
     return canAdd;
   },
@@ -43,7 +45,7 @@ Wheel.Model.subclass('Step4.Models.Stack', {
     this.cards = _.reject(this.cards, function (item) {
       return card === item;
     });
-    card.off('movestart');
+    this.length(this.cards.length);
   },
 
   positionCard: function(card, zIndex) {
@@ -85,5 +87,5 @@ Wheel.Model.subclass('Step4.Models.Stack', {
     return !this.cards.length;
   }
 }, {
-  properties: ['position']
+  properties: ['position', 'length']
 });

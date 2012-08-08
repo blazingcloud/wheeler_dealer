@@ -8,6 +8,31 @@ Wheel.View.subclass('Step4.Views.Stack', {
       top:    this.model.top ||    offset.top -  gameOffset.top,
       zIndex: this.model.zIndex || parseInt(this.$.css('z-index'))
     });
+
+    this.toggleShadow();
+  },
+
+  listen: function() {
+    this.model.on('change:length', this.toggleShadow.bind(this));
+  },
+
+  toggleShadow: function() {
+    var length = this.model.length();
+    if (this.shadow && length === 0) {
+      this.removeShadow();
+    } else if (!this.shadow && length > 0) {
+      this.addShadow();
+    }
+  },
+
+  addShadow: function() {
+    this.shadow = true;
+    this.$.addClass('shadow');
+  },
+
+  removeShadow: function() {
+    this.shadow = false;
+    this.$.removeClass('shadow');
   }
 }, {
   gameOffset: function() {

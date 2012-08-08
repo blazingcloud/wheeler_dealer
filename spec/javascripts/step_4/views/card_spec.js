@@ -1,16 +1,16 @@
-describe('Step3.Views.Card', function() {
+describe('Step4.Views.Card', function() {
   var view, model;
   beforeEach(function() {
-    Step3.Views.Card.template = function() {
+    Step4.Views.Card.template = function() {
       return "<div class='card'><div class='faces'></div></div>";
     };
 
-    model = Step3.Models.Card.build({
+    model = Step4.Models.Card.build({
       suit: 'heart',
       faceValue: 'J'
     });
 
-    view = Step3.Views.Card.build({model: model});
+    view = Step4.Views.Card.build({model: model});
   });
 
   describe('#init', function() {

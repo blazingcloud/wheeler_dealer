@@ -34,6 +34,10 @@ describe('Step4.Models.Stack', function() {
         zIndex: 43
       });
     });
+
+    it('sets the length property', function() {
+      expect(stack.length()).toBe(5);
+    });
   });
 
   describe('#canAdd(card)', function() {
@@ -86,6 +90,11 @@ describe('Step4.Models.Stack', function() {
         expect(card.face).toHaveBeenCalledWith('front');
       });
 
+      it('changes the length property', function() {
+        stack.add(card);
+        expect(stack.length()).toBe(6);
+      });
+
       it('returns true', function() {
         expect(stack.add(card)).toBe(true);
       });
@@ -107,10 +116,21 @@ describe('Step4.Models.Stack', function() {
     });
   });
 
-  it('removes cards', function() {
-    var card = stack.cards[2];
-    stack.remove(card);
-    expect(_.include(stack.cards, card)).toBe(false);
+  describe('#remove', function() {
+    var card;
+    beforeEach(function() {
+      card = stack.cards[2];
+    });
+
+    it('removes the card from the deck', function() {
+      stack.remove(card);
+      expect(_.include(stack.cards, card)).toBe(false);
+    });
+
+    it('decrements the length property', function() {
+      stack.remove(card);
+      expect(stack.length()).toBe(4);
+    });
   });
 
   describe('#positionCards', function() {
