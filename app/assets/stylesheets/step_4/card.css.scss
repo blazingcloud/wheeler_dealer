@@ -3,7 +3,6 @@
 .card {
   width:  $card_width;
   height: $card_height;
-  margin: $card_margin;
 
   position: absolute;
   left: 0;
@@ -71,8 +70,8 @@
 
         .suit,
         .face_value {
-          font-size: $card_margin*6;
-          line-height: $card_margin*6;
+          font-size: $card_margin*7;
+          line-height: $card_margin*7.5;
           margin: 0 auto 0;
           text-align: center;
         }

@@ -1,8 +1,8 @@
 @import 'variables';
 
 #game {
-  width: 1000px;
-  min-height: 500px;
+  width: ($card_width + $stack_margin) *7.9;
+  min-height: $card_height *5;
   margin: 50px auto;
   background-color: #141;
   box-shadow: 5px 5px 5px rgba(0,0,0, 0.5);
@@ -46,6 +46,7 @@
       left: $stack_margin;
       top: $stack_margin;
       height: $card_height + (2* $stack_margin);
+      background-color: rgba(255,255,255, 0.05);
 
       border: 1px solid rgba(0,0,0, 0.2);
 
