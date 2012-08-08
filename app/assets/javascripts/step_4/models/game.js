@@ -2,8 +2,19 @@ Wheel.Model.subclass('Step4.Models.Game', {
   init: function() {
     this.cards =    Step4.Models.Card.deck();
     this.deck =     Step4.Models.Stack.build({cards: this.cards});
-    this.waste =    Step4.Models.Stack.build({zIndex: 100});
-    this.tableau =  Step4.Models.Tableau.build({zIndex: 100});
+    var baseIndex = 100;
+
+    this.waste = Step4.Models.Stack.build({zIndex: baseIndex});
+
+    this.foundations = [];
+    _.times(4, function() {
+      this.foundations.push(Step4.Models.Stack.build({zIndex: baseIndex}));
+    }.bind(this));
+
+    this.tableaus = [];
+    _.times(7, function() {
+      this.tableaus.push(Step4.Models.Tableau.build({zIndex: baseIndex}));
+    }.bind(this));
 
     this.listen();
   },
@@ -20,7 +31,6 @@ Wheel.Model.subclass('Step4.Models.Game', {
 
   moveCard: function(card) {
     this.deck.remove(card);
-    this.tableau.add(card) || this.waste.add(card);
-    card.off();
+    this.waste.add(card);
   }
 });
