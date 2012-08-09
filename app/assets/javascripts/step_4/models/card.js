@@ -1,4 +1,4 @@
-Wheel.Model.subclass('Step4.Models.Card', {
+Wheel.Class('Step4.Models.Card', {
   init: function() {
     this.suitEntity = this._class.suitMap[this.suit];
     this.color = this.suit.match(/club|spade/) ? 0 : 1;

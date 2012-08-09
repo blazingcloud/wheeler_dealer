@@ -12,3 +12,4 @@ Step4.Models.Stack.subclass('Step4.Models.Foundation', {
     }
   }
 });
+Step4.Models.Foundation.mixover(Step4.OffsetPositioning);

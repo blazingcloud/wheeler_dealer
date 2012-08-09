@@ -1,4 +1,4 @@
-Wheel.Model.subclass('Step4.Models.Game', {
+Wheel.Class('Step4.Models.Game', {
   init: function() {
     this.cards =    Step4.Models.Card.deck();
     this.deck =     Step4.Models.Stack.build({cards: this.cards});
@@ -15,8 +15,6 @@ Wheel.Model.subclass('Step4.Models.Game', {
     _.times(7, function() {
       this.tableaus.push(Step4.Models.Tableau.build({zIndex: baseIndex}));
     }.bind(this));
-
-    this.listen();
   },
 
   listen: function() {

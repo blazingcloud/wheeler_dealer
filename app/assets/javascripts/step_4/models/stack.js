@@ -1,4 +1,4 @@
-Wheel.Model.subclass('Step4.Models.Stack', {
+Wheel.Class('Step4.Models.Stack', {
   init: function() {
     this.cards = this.cards || [];
     this.position({
@@ -7,8 +7,6 @@ Wheel.Model.subclass('Step4.Models.Stack', {
       top: this.top || 0
     });
     this.length(this.cards.length);
-
-    this.listen();
   },
 
   listen: function() {
@@ -23,7 +21,7 @@ Wheel.Model.subclass('Step4.Models.Stack', {
     }.bind(this));
   },
 
-  offset: 35,
+  offset: 20, // TODO: this should be extracted from the CSS in some way
 
   canAdd: function(card) {
     return (card instanceof Step4.Models.Card) && !_.include(this.cards, card);

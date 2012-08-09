@@ -5,6 +5,22 @@ describe('Step4.Models.Foundation', function() {
     other = Step4.Models.Card.build({suit: 'heart', faceValue: '2'});
   });
 
+  describe('#positionCard', function() {
+    beforeEach(function() {
+      foundation = Step4.Models.Foundation.build();
+      foundation.add(ace);
+      foundation.add(other);
+    });
+
+    it('when first card, it offsets the top position by 0', function() {
+      expect(ace.position().top).toBe(0);
+    });
+
+    it('when a subsequent card, it offsets the top position by the header size', function() {
+      expect(other.position().top).toBe(foundation.offset);
+    });
+  });
+
   describe('#canAdd', function() {
     describe('when there are no cards', function() {
       beforeEach(function() {
