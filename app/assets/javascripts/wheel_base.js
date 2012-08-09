@@ -5,6 +5,7 @@
 //= require wheel/mixins/events.js
 //= require wheel/mixins/ajax.js
 //= require wheel/class.js
+//= require wheel/class/base.js
 //= require wheel/class/singleton.js
 //= require wheel/utils/loader.js
 //= require wheel/utils/connection_checker.js
