@@ -27,7 +27,10 @@ describe('Step4.Views.Stack', function() {
     it('sets the shadow properly', function() {
       spyOn(model, 'length').andReturn(1);
       view.init();
-      expect(view.$.attr('class')).toMatch(/shadow/);
+      waits(750);
+      runs(function() {
+        expect(view.$.attr('class')).toMatch(/shadow/);
+      });
     });
   });
 
@@ -63,7 +66,10 @@ describe('Step4.Views.Stack', function() {
 
         it('and the length becomes greater than 0, it adds a shadow', function() {
           model.length(10);
-          expect(view.$.attr('class')).toMatch(/shadow/);
+          waits(750);
+          runs(function() {
+            expect(view.$.attr('class')).toMatch(/shadow/);
+          });
         });
       });
     });

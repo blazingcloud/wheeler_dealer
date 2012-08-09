@@ -66,21 +66,39 @@ describe('Step4.Models.Card', function() {
       });
     });
 
-    describe('#nextFaceValue(faceValue)', function() {
+    describe('#decreasingValue(faceValue)', function() {
       it('is falsey for "A"', function() {
-        expect(Step4.Models.Card.nextFaceValue('A')).toBeFalsy();
+        expect(Step4.Models.Card.decreasingValue('A')).toBeFalsy();
       });
 
       it('is "A" when given "2"', function() {
-        expect(Step4.Models.Card.nextFaceValue('2')).toBe('A');
+        expect(Step4.Models.Card.decreasingValue('2')).toBe('A');
       });
 
       it('is "2" when given "3"', function() {
-        expect(Step4.Models.Card.nextFaceValue('3')).toBe('2');
+        expect(Step4.Models.Card.decreasingValue('3')).toBe('2');
       });
 
       it('is "Q" when given "K"', function() {
-        expect(Step4.Models.Card.nextFaceValue('K')).toBe('Q');
+        expect(Step4.Models.Card.decreasingValue('K')).toBe('Q');
+      });
+    });
+
+    describe('#increasingValue(faceValue)', function() {
+      it('is falsey for "K"', function() {
+        expect(Step4.Models.Card.increasingValue('K')).toBeFalsy();
+      });
+
+      it('is "2" when given "A"', function() {
+        expect(Step4.Models.Card.increasingValue('A')).toBe('2');
+      });
+
+      it('is "3" when given "2"', function() {
+        expect(Step4.Models.Card.increasingValue('2')).toBe('3');
+      });
+
+      it('is "K" when given "Q"', function() {
+        expect(Step4.Models.Card.increasingValue('Q')).toBe('K');
       });
     });
   });

@@ -6,7 +6,7 @@ Step4.Models.Stack.subclass('Step4.Models.Tableau', {
     var top = this.topCard();
     if (top) {
       return card.color !== top.color &&
-        Step4.Models.Card.nextFaceValue(top.faceValue) === card.faceValue;
+        Step4.Models.Card.decreasingValue(top.faceValue) === card.faceValue;
     } else {
       return card.faceValue === 'K';
     }

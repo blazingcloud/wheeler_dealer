@@ -21,7 +21,7 @@ describe('Step4.Models.Game', function() {
       it('has foundations', function() {
         expect(game.foundations.length).toBe(4);
         _.each(game.foundations, function(f) {
-          expect(f).toBeA(Step4.Models.Stack);
+          expect(f).toBeA(Step4.Models.Foundation);
         });
       });
 

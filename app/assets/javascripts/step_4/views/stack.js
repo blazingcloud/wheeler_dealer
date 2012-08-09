@@ -27,7 +27,9 @@ Wheel.View.subclass('Step4.Views.Stack', {
 
   addShadow: function() {
     this.shadow = true;
-    this.$.addClass('shadow');
+    setTimeout(function() {
+      this.$.addClass('shadow');
+    }.bind(this), 750);
   },
 
   removeShadow: function() {

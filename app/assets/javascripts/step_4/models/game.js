@@ -8,7 +8,7 @@ Wheel.Model.subclass('Step4.Models.Game', {
 
     this.foundations = [];
     _.times(4, function() {
-      this.foundations.push(Step4.Models.Stack.build({zIndex: baseIndex}));
+      this.foundations.push(Step4.Models.Foundation.build({zIndex: baseIndex}));
     }.bind(this));
 
     this.tableaus = [];

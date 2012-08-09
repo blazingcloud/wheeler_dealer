@@ -17,6 +17,7 @@
 //= require step_4/models/stack
 //= require step_4/models/game
 //= require step_4/models/tableau
+//= require step_4/models/foundation
 //= require step_4/views/card
 //= require step_4/views/stack
 //

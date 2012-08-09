@@ -45,7 +45,11 @@ Wheel.Model.subclass('Step4.Models.Card', {
     return _.shuffle(deck);
   },
 
-  nextFaceValue: function(faceValue) {
+  decreasingValue: function(faceValue) {
     return this.faceValues[_.indexOf(this.faceValues, faceValue)-1];
+  },
+
+  increasingValue: function(faceValue) {
+    return this.faceValues[_.indexOf(this.faceValues, faceValue)+1];
   }
 });
