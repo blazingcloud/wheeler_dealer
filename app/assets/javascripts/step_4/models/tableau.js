@@ -10,6 +10,10 @@ Step4.Models.Stack.subclass('Step4.Models.Tableau', {
     } else {
       return card.faceValue === 'K';
     }
+  },
+
+  deal: function(card) {
+    this._add(card);
   }
 });
 Step4.Models.Tableau.mixover(Step4.OffsetPositioning);

@@ -67,6 +67,35 @@ describe('Step4.Models.Tableau', function() {
     });
   });
 
+  describe('#deal(card)', function() {
+    it('will accept any card', function() {
+      spyOn(tableau, 'canAdd');
+      tableau.deal(seven);
+      expect(tableau.canAdd).not.toHaveBeenCalled();
+    });
+
+    it('adds the card to the end of the cards array', function() {
+      tableau.deal(seven);
+      expect(tableau.cards[tableau.cards.length - 1]).toBe(seven);
+    });
+
+    it('positions the card', function() {
+      spyOn(seven, 'position');
+      tableau.deal(seven);
+      expect(seven.position).toHaveBeenCalled();
+      expect(seven.position.mostRecentCall.args[0]).toEqual({
+        left: 0,
+        top: 0,
+        zIndex: 1
+      });
+    });
+
+    it('changes the length property', function() {
+      tableau.deal(seven);
+      expect(tableau.length()).toBe(1);
+    });
+  });
+
   describe('#positionCard', function() {
     beforeEach(function() {
       tableau.add(king);

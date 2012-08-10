@@ -32,31 +32,5 @@ describe('Step4.Models.Game', function() {
         });
       });
     });
-
-    it('listens on each card for move events', function() {
-      spyOn(game, 'moveCard');
-      var card = game.cards[0];
-      card.trigger('move');
-      expect(game.moveCard).toHaveBeenCalled();
-    });
-  });
-
-  describe('#moveCard', function() {
-    var card;
-    beforeEach(function() {
-      card = game.cards[0];
-    });
-
-    it('removes the card from the deck', function() {
-      spyOn(game.deck, 'remove');
-      game.moveCard(card);
-      expect(game.deck.remove).toHaveBeenCalledWith(card);
-    });
-
-    it('it add the card to the waste', function() {
-      spyOn(game.waste, 'add');
-      game.moveCard(card);
-      expect(game.waste.add).toHaveBeenCalledWith(card);
-    });
   });
 });

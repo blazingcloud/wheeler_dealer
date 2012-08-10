@@ -17,18 +17,27 @@ Wheel.Class('Step4.Models.Game', {
     }.bind(this));
   },
 
-  listen: function() {
-    // Listen on each card move for a 'move' event. If this happens move the card
-    // to a new stack with 'moveCard'.
-    _.each(this.cards, function(card) {
-      card.on('move', function() {
-        this.moveCard(card);
-      }.bind(this));
-    }.bind(this));
+  deal: function() {
+    var card;
+    // first round -------------
+     var card = this.nextCard();
+     card.face('front');
+     this.move(card, this.tableaus[0]);
+     this.move(this.nextCard(), this.tableaus[1]);
+     this.move(this.nextCard(), this.tableaus[2]);
+     this.move(this.nextCard(), this.tableaus[3]);
+     this.move(this.nextCard(), this.tableaus[4]);
+     this.move(this.nextCard(), this.tableaus[5]);
+     this.move(this.nextCard(), this.tableaus[6]);
   },
 
-  moveCard: function(card) {
+  nextCard: function() {
+    var card = this.deck.topCard();
     this.deck.remove(card);
-    this.waste.add(card);
+    return card;
+  },
+
+  move: function(card, stack) {
+    stack.deal(card);
   }
 });

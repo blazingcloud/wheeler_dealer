@@ -84,12 +84,6 @@ describe('Step4.Models.Stack', function() {
         });
       });
 
-      it('shows the front face', function() {
-        spyOn(card, 'face');
-        stack.add(card);
-        expect(card.face).toHaveBeenCalledWith('front');
-      });
-
       it('changes the length property', function() {
         stack.add(card);
         expect(stack.length()).toBe(6);

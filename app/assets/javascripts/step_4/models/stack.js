@@ -30,13 +30,16 @@ Wheel.Class('Step4.Models.Stack', {
   add: function(card) {
     var canAdd = this.canAdd(card);
     if (canAdd) {
-      var zIndex = this.topZIndex();
-      this.positionCard(card, zIndex);
-      card.face('front');
-      this.cards[this.cards.length] = card;
-      this.length(this.cards.length);
+      this._add(card);
     }
     return canAdd;
+  },
+
+  _add: function(card) {
+    var zIndex = this.topZIndex();
+    this.positionCard(card, zIndex);
+    this.cards[this.cards.length] = card;
+    this.length(this.cards.length);
   },
 
   remove: function(card) {

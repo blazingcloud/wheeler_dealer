@@ -23,12 +23,15 @@ Wheel.App.subclass('Step4', {
 
     var $foundations = $('.stack.foundation');
     this.foundationViews = _.map($foundations, function(dom, i) {
-      return Step4.Views.Stack.build(dom, {model: this.game.tableaus[i]});
+      return Step4.Views.Stack.build(dom, {model: this.game.foundations[i]});
     }.bind(this));
 
     // render all the card views on to the game
     this.cardViews =   Step4.Views.Card.assemble(
       this.game.cards, { parent: $('#game .stacks') }
     );
+
+    // deal the cards
+    this.game.deal();
   }
 });
