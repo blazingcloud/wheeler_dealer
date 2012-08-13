@@ -13,6 +13,7 @@
 //= require step_3/views/card
 //= require step_3/views/stack
 //
+//= require step_4/timed_queue
 //= require step_4/mixins/offset_positioning
 //= require step_4/models/card
 //= require step_4/models/stack
