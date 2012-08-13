@@ -11,11 +11,8 @@
   font-weight: bold;
 
   -webkit-perspective: 1000px;
-  -webkit-transition: left 750ms;
+  -webkit-transition: left 750ms, top 750ms, -webkit-transform 750ms;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-
-  -moz-perspective: 1000px;
-  -moz-transition: left 750ms;
 
   .faces {
     width: 100%;

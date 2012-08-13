@@ -6,29 +6,39 @@ Wheel.Class('Step4.Models.Game', {
 
     this.waste = Step4.Models.Stack.build({zIndex: baseIndex});
 
-    this.foundations = [];
-    _.times(4, function() {
-      this.foundations.push(Step4.Models.Foundation.build({zIndex: baseIndex}));
-    }.bind(this));
-
     this.tableaus = [];
     _.times(7, function() {
       this.tableaus.push(Step4.Models.Tableau.build({zIndex: baseIndex}));
+      baseIndex++;
     }.bind(this));
+
+    this.foundations = [];
+    _.times(4, function() {
+      this.foundations.push(Step4.Models.Foundation.build({zIndex: baseIndex}));
+      baseIndex++;
+    }.bind(this));
+
+    this.queue = Step4.TimedQueue.build(750);
   },
 
   deal: function() {
-    var card;
     // first round -------------
-     var card = this.nextCard();
-     card.face('front');
-     this.move(card, this.tableaus[0]);
-     this.move(this.nextCard(), this.tableaus[1]);
-     this.move(this.nextCard(), this.tableaus[2]);
-     this.move(this.nextCard(), this.tableaus[3]);
-     this.move(this.nextCard(), this.tableaus[4]);
-     this.move(this.nextCard(), this.tableaus[5]);
-     this.move(this.nextCard(), this.tableaus[6]);
+    _.each(_.range(0,7), function(i) {
+      this.dealRound(i);
+    }.bind(this));
+
+    this.queue.run();
+  },
+
+  dealRound: function(startingTableau) {
+    var card = this.nextCard();
+    this.queue.add(function() {
+      card.face('front');
+    }, 0);
+    this.move(card, this.tableaus[startingTableau]);
+    _.each(_.range(startingTableau + 1, 7), function(i) {
+      this.move(this.nextCard(), this.tableaus[i]);
+    }.bind(this));
   },
 
   nextCard: function() {
@@ -38,6 +48,8 @@ Wheel.Class('Step4.Models.Game', {
   },
 
   move: function(card, stack) {
-    stack.deal(card);
+    this.queue.add(function() {
+      stack.deal(card);
+    }.bind(this));
   }
 });
