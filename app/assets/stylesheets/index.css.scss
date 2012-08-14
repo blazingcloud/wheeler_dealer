@@ -1,0 +1,26 @@
+// = require ./reset
+// = require ./layout
+
+#content {
+  width: 90%;
+  margin: 10px auto;
+  background-color: white;
+  padding: 10px;
+}
+
+a { color: black; }
+a:hover,
+a:active { color: #900; }
+
+h1 {
+  font-size: 2em;
+}
+
+ul {
+  /*margin: 1em;*/
+  list-style: none;
+}
+
+li {
+  margin: 1em;
+}

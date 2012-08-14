@@ -8,4 +8,9 @@ task :step_dup do
   `cp #{Rails.root}/app/views/layouts/stacks.html.erb #{Rails.root}/app/views/layouts/step_#{step + 1}.html.erb`
   `cp #{Rails.root}/app/views/deal/stacks.html.erb #{Rails.root}/app/views/deal/step_#{step + 1}.html.erb`
   `cp -r #{Rails.root}/spec/javascripts/step_#{step} #{Rails.root}/spec/javascripts/step_#{step + 1}`
+
+  puts "Files copied ... be sure to:"
+  puts "  1) Add the new file to the manifest"
+  puts "  2) Change the layout to link to the right manifests"
+  puts "  3) Change the namespace to reflect the new step"
 end
