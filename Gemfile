@@ -22,6 +22,7 @@ end
 group :development, :test do
   gem 'jasmine'
   gem 'jasminerice'
+  gem 'heroku'
 end
 
 # gem 'jquery-rails'
