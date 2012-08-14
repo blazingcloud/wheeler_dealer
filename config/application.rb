@@ -60,7 +60,7 @@ module WheelerDealer
     config.assets.enabled = true
     config.assets.precompile += [
       'index.css', 
-      'step_1/app.js', 'step_1/base.js', 'step_1/application.css',
+      'step_1/app_manifest.js', 'step_1/base.js', 'step_1/application.css',
       'step_2/app_manifest.js', 'step_2/base.js', 'step_2/application.css',
       'step_3/app_manifest.js', 'step_3/base.js', 'step_3/application.css',
       'step_4/app_manifest.js', 'step_4/base.js', 'step_4/application.css'
